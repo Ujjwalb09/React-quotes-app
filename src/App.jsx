@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import TypeIt from "typeit-react";
+import { Analytics } from "@vercel/analytics/react";
 
 export default function App() {
   const [quote, setQuote] = useState("");
@@ -116,6 +117,7 @@ export default function App() {
           </ul>
         )}
       </div>
+      <Analytics />
     </div>
   );
 }
