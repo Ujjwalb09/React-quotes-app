@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function App() {
   const [quote, setQuote] = useState("");
@@ -8,11 +9,10 @@ export default function App() {
   const fetchQuote = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch(
+      const response = await axios.get(
         "https://ron-swanson-quotes.herokuapp.com/v2/quotes"
       );
-      const data = await response.json();
-      setQuote(data[0]);
+      setQuote(response.data[0]);
     } catch (error) {
       console.error("Error fetching the quote:", error);
       setQuote("Failed to fetch quote. Please try again.");
