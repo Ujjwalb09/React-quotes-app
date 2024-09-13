@@ -32,7 +32,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-100 to-purple-100 p-6 flex flex-col items-center justify-center">
+    <div className="min-h-screen bg-gradient-to-br from-blue-300 to-purple-300 p-6 flex flex-col items-center justify-center">
       <h1 className="text-4xl font-bold text-center mb-8 text-gray-800 tracking-wide">
         <TypeIt
           options={{
