@@ -5,6 +5,31 @@ export default function App() {
   const [savedQuotes, setSavedQuotes] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  const fetchQuote = async () => {
+    setIsLoading(true);
+    try {
+      const response = await fetch(
+        "https://ron-swanson-quotes.herokuapp.com/v2/quotes"
+      );
+      const data = await response.json();
+      setQuote(data[0]);
+    } catch (error) {
+      console.error("Error fetching the quote:", error);
+      setQuote("Failed to fetch quote. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const saveQuote = () => {
+    if (quote && !savedQuotes.includes(quote)) {
+      setSavedQuotes((prevQuotes) => [...prevQuotes, quote]);
+    }
+  };
+  useEffect(() => {
+    fetchQuote();
+  }, []);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-100 to-purple-100 p-6 flex flex-col items-center justify-center">
       <h1 className="text-4xl font-bold text-center mb-8 text-gray-800 tracking-wide">
@@ -26,16 +51,20 @@ export default function App() {
         </div>
         <div className="bg-gray-100 px-8 py-4 flex justify-between">
           <button
-            // onClick={fetchQuote}
-            className="bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50"
+            onClick={fetchQuote}
+            className="bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 flex items-center"
             disabled={isLoading}
           >
-            <i className="ri-refresh-line text-lg animate-spin mr-2"></i>
-            {isLoading ? "loading.." : "New Quote"}
+            <i
+              className={`ri-refresh-line text-lg ${
+                isLoading ? "animate-spin" : ""
+              } mr-2`}
+            ></i>
+            {isLoading ? "Loading.." : "New Quote"}
           </button>
           <button
-            // onClick={saveQuote}
-            className="bg-green-500 text-white px-6 py-2 rounded-full hover:bg-green-600 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-50"
+            onClick={saveQuote}
+            className="bg-green-500 text-white px-6 py-2 rounded-full hover:bg-green-600 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-50 flex items-center"
             disabled={isLoading || !quote}
           >
             <i className="text-lg ri-save-fill mr-1"></i> Save Quote
