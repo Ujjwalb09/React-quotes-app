@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import TypeIt from "typeit-react";
 
 export default function App() {
   const [quote, setQuote] = useState("");
@@ -33,7 +34,22 @@ export default function App() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-100 to-purple-100 p-6 flex flex-col items-center justify-center">
       <h1 className="text-4xl font-bold text-center mb-8 text-gray-800 tracking-wide">
-        Welcome to Quotable
+        <TypeIt
+          options={{
+            strings: ["Welcome to quotable"],
+            speed: 70,
+
+            cursorSpeed: 1000,
+            waitUntilVisible: true,
+          }}
+          getBeforeInit={(instance) =>
+            instance
+              .move(-7, { delay: 200 })
+              .delete(1, { delay: 300 })
+              .type("Q")
+              .move(null, { speed: 130, to: "end" })
+          }
+        />
       </h1>
 
       {/* Quote Card */}
@@ -45,7 +61,14 @@ export default function App() {
             </div>
           ) : (
             <p className="text-xl font-semibold text-gray-800 text-center italic">
-              "{quote}"
+              <TypeIt
+                options={{
+                  strings: [`"${quote}"`],
+                  speed: 10,
+                  cursor: false,
+                }}
+              />
+              {/* "{quote}" */}
             </p>
           )}
         </div>

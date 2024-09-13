@@ -17,7 +17,8 @@
     "card": "^2.5.4",
     "init": "^0.1.2",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "typeit-react": "^2.7.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
