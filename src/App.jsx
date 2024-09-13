@@ -52,7 +52,7 @@ export default function App() {
         />
       </h1>
 
-      {/* Quote Card */}
+      {/* Card */}
       <div className="w-full max-w-lg mx-auto bg-white shadow-2xl rounded-lg overflow-hidden">
         <div className="p-8">
           {isLoading ? (
@@ -68,7 +68,6 @@ export default function App() {
                   cursor: false,
                 }}
               />
-              {/* "{quote}" */}
             </p>
           )}
         </div>
