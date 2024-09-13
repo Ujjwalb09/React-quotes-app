@@ -72,10 +72,10 @@ export default function App() {
             </p>
           )}
         </div>
-        <div className="bg-gray-100 px-8 py-4 flex justify-between">
+        <div className="bg-gray-100 px-8 py-4 flex flex-col sm:flex-row gap-4">
           <button
             onClick={fetchQuote}
-            className="bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 flex items-center"
+            className="bg-blue-500 text-white px-4 sm:px-6 py-2 rounded-full hover:bg-blue-600 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 flex items-center justify-center w-full"
             disabled={isLoading}
           >
             <i
@@ -87,7 +87,7 @@ export default function App() {
           </button>
           <button
             onClick={saveQuote}
-            className="bg-green-500 text-white px-6 py-2 rounded-full hover:bg-green-600 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-50 flex items-center"
+            className="bg-green-500 text-white px-4 sm:px-6 py-2 rounded-full hover:bg-green-600 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-50 flex items-center justify-center w-full"
             disabled={isLoading || !quote}
           >
             <i className="text-lg ri-save-fill mr-1"></i> Save Quote
